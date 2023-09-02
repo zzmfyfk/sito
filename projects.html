@@ -4,16 +4,30 @@
     <title>ARCHIFACTS</title>
      <link href="css/style.css" rel='stylesheet' type='text/css' />
         <link href="css/componenti.css" rel='stylesheet' type='text/css' />
+		<link href="css/style.css" rel="stylesheet" id="theme_link" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
 </head>
-<body>
+	<head>
+	<link href="css/style.css" rel="stylesheet" id="theme_link" />
 </head>
 <body>
-  <header>
-    <button id="theme-toggle" class="theme-toggle">
+    <button id="btn" class="theme-toggle">
         <img class="night-mode" src="images/cambio_stile.svg" alt="night-mode">
     </button>
+	  
+	  <script>
+      const btn = document.querySelector('#btn');
+      const themeLink = document.querySelector('#theme_link');
+      btn.addEventListener('click', function () {
+        if (themeLink.getAttribute('href') == 'css/style.css') {
+          themeLink.href = 'css/nightmode.css';
+        } else {
+          themeLink.href = 'css/style.css';
+        }
+      });
+    </script>
+</body>
     
     <div class="menu-container">
      <div class="menu-toggle">
