@@ -1,0 +1,47 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.container {
+  background-color: #333333;
+}
+
+.quote {
+  color: #ffffff;
+}
+
+h1 {
+  color: #ffffff;
+}
+
+p {
+  color: #ffffff;
+}
+
+form[name="modulo"] {
+  background-color: #555555;
+}
+
+input[type="text"],
+textarea {
+  background-color: #777777;
+  color: #ffffff;
+}
+
+input[type="button"] {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+label {
+  color: #ffffff;
+}
+
+footer {
+  background-color: #111111;
+}
+
+footer p {
+  color: #ffffff;
+}

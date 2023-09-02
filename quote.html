@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ARCHIFACTS</title>
+    <link href="css/style.css" rel='stylesheet' type='text/css' /> 
+   <link href="css/componenti.css" rel='stylesheet' type='text/css' />
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <style>
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+.quote {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+form[name="modulo"] {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="button"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+textarea {
+  height: 150px;
+}
+
+/*label {
+  display: block;
+  font-weight: bold;
+}*/
+
+footer {
+  background-color: #403e3e;
+ 
+}
+
+footer p {
+  font-size: 14px;
+
+}
+
+
+     </style>
+   </head>
+   <body>
+    <header>
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleNightMode()">
+            <img class="night-mode" src="images/cambio_stile.svg" alt="night-mode">
+          </button>
+          
+        
+        <div class="menu-container">
+         <!--<div class="menu-toggle">
+            <div class="menu-icon"></div>
+          </div>-->
+            
+
+          <button class="menu-toggle"></button>
+          <ul class="menu">
+            <li><a class="page-scroll" href="index.html">Home</a></li>
+            <li><a class="page-scroll" href="#services">Service</a></li>
+            <li><a class="page-scroll" href="projects.html">Projects</a></li>
+            <li><a class="page-scroll" href="staff.html">Staff</a></li>
+            <li><a class="page-scroll" href="#portfolio">Portfolio</a></li>
+            <li><a class="page-scroll" href="quote.html">Quote</a></li>
+            <li><a class="page-scroll" href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </header>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12">
+                <div class="quote">
+                <h1>Richiedi un preventivo</h1>
+                <p>Compila il modulo sottostante per richiedere un preventivo gratuito.</p>
+                </div>
+            </div>
+        </div>
+      <form name="modulo">
+        Email:<br />
+        <input type="text" name="email"> <br />
+        Oggetto:<br />
+        <input type="text" name="oggetto"> <br />
+        Messaggio:<br />
+        <textarea name="messaggio" rows="10" cols="30"></textarea> <br/>
+        <input type="button" value="Invia" onClick="Email()">
+        </form>
+
+      <footer>
+        <div class="foot">
+            <p>&copy; 2023 Archifacts. All rights reserved.</p>
+        </div>
+    </footer>
+   </body>
+
+   <script>
+    $(document).ready(function() {
+      var currentIndex = 0;
+      var slides = $(".carousel img");
+      var totalSlides = slides.length;
+      var slideInterval = setInterval(nextSlide, 5000); // Intervallo di 5 secondi per il cambio automatico delle slide
+  
+      // Funzione per mostrare lo slide corrente
+      function showSlide(index) {
+        slides.hide();
+        slides.eq(index).show();
+        $(".carousel-indicators li").removeClass("active");
+        $(".carousel-indicators li").eq(index).addClass("active");
+      }
+  
+      // Funzione per passare allo slide successivo
+      function nextSlide() {
+        currentIndex++;
+        if (currentIndex >= totalSlides) {
+          currentIndex = 0;
+        }
+        showSlide(currentIndex);
+      }
+  
+      // Funzione per passare allo slide precedente
+      function prevSlide() {
+        currentIndex--;
+        if (currentIndex < 0) {
+          currentIndex = totalSlides - 1;
+        }
+        showSlide(currentIndex);
+      }
+  
+      // Evento per il click sul pulsante "Precedente"
+      $(".carousel-control.left").click(function() {
+        prevSlide();
+      });
+  
+      // Evento per il click sul pulsante "Successivo"
+      $(".carousel-control.right").click(function() {
+        nextSlide();
+      });
+  
+      // Evento per il click sui punti di indicazione
+      $(".carousel-indicators li").click(function() {
+        var index = $(this).index();
+        showSlide(index);
+      });
+  
+      // Mostra il primo slide all'avvio
+      showSlide(0);
+  
+      // Evento per il click sul toggle del menù
+      $('.menu-toggle').click(function() {
+        $(this).toggleClass('open');
+        $('.menu').toggleClass('open');
+      });
+  
+      // Evento per il click sul pulsante di chiusura del menù
+      $('.menu-close').click(function() {
+        $('.menu-toggle').removeClass('open');
+        $('.menu').removeClass('open');
+      });
+     
+    });
+
+    // Funzione per attivare o disattivare la modalità notturna
+    function toggleNightMode() {
+  // Ottenere il riferimento all'elemento HTML che rappresenta la pagina o il contenitore principale
+  var pageContainer = document.getElementById("nightmode.css");
+
+  // Aggiungere o rimuovere una classe CSS per attivare o disattivare la modalità notturna
+  pageContainer.classList.toggle("nightmode.css");
+}
+
+    // funzione per inviare email
+    function Email() {
+    var email = document.modulo.email.value;
+    var oggetto = document.modulo.oggetto.value;
+    var messaggio = document.modulo.messaggio.value;
+    if ((email.indexOf("@") == (-1)) || (email == "") || (email == "undefined")) {
+    alert("Inserire un indirizzo email valido.");
+    document.modulo.email.focus();
+    }
+    else if ((oggetto == "") || (oggetto == "undefined")) {
+    alert("Inserire un oggetto.");
+    document.modulo.oggetto.focus();
+    }
+    else if ((messaggio == "") || (messaggio == "undefined")) {
+    alert("Inserire un messaggio.");
+    document.modulo.messaggio.focus();
+    }
+    else {
+    location.href = "mailto:" + email + "?Subject=" + oggetto + "&Body=" + messaggio;
+    }
+    }
+
+  </script>      
+  
+</html>
